@@ -65,17 +65,25 @@ export default function Form() {
   return (
     <>
       <form className="main-form" onSubmit={handleSubmit}>
-        <label className="">Email</label>
+        <label className={emailError ? "error" : undefined}>
+          {emailError ? "Incorrect email format." : "Enter your email"}
+        </label>
         <input
+          className={emailError ? "error" : undefined}
           type="text"
           placeholder="john@email.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <label className="">Password</label>
+        <label className={passwordError ? "error" : undefined}>
+          {passwordError
+            ? "Password must be at least 5 chars"
+            : "Enter your password"}
+        </label>
         <div className="password">
           <input
+            className={passwordError ? "error" : undefined}
             id="password-input"
             type={inputType}
             placeholder="*********"

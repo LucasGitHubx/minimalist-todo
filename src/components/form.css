@@ -27,6 +27,10 @@ form input {
   outline: none;
   border-radius: 2px;
 }
+form input.error {
+  animation-name: error-input;
+  animation-duration: 200ms;
+}
 
 form.main-form div.password {
   position: relative;
@@ -80,4 +84,25 @@ form.main-form button:active {
   cursor: pointer;
   text-decoration: underline;
   color: inherit;
+}
+
+@keyframes error-input {
+  0% {
+    transform: translateX(5px);
+  }
+  20% {
+    transform: translateX(10px);
+  }
+  40% {
+    transform: translateX(0px);
+  }
+  60% {
+    transform: translateX(-5px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
 }
