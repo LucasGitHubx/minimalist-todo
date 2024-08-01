@@ -1,14 +1,22 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { onAuthStateChanged, User } from "firebase/auth";
+import { Outlet, Navigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { auth } from "../firebase/connection";
+
 import "./mainLayout.css";
 
 export default function MainLayout() {
+  const [user, setUser] = useState<User | null>();
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+  });
+
   return (
     <>
-      <header>
-        <h1>Minimalist todolist</h1>
-        <NavLink to="">Logout</NavLink>
-      </header>
-
+      {user === null ? <Navigate to="/todo/login" /> : undefined}
       <Outlet />
     </>
   );
