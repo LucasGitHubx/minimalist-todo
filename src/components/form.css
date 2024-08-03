@@ -9,7 +9,7 @@ form.main-form {
   align-items: center;
   gap: 1rem;
 }
-form label {
+form.main-form label {
   position: relative;
   top: 0.9rem;
   width: 100%;
@@ -17,17 +17,17 @@ form label {
   transition: 0.3s;
   font-size: 1.1rem;
 }
-form label.error {
+form.main-form label.error {
   color: rgb(255, 166, 156);
 }
-form input {
+form.main-form input {
   padding: 0.6rem;
   width: 100%;
   border: none;
   outline: none;
   border-radius: 2px;
 }
-form input.error {
+form.main-form input.error {
   animation-name: error-input;
   animation-duration: 200ms;
 }
