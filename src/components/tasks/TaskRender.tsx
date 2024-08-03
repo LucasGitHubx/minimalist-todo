@@ -5,6 +5,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { deleteTask } from "../../firebase/firestore";
 import { useTaskStore } from "../../store/taskStore";
 import { useState } from "react";
+import FormUpdateTask from "./FormUpdateTask";
 
 interface Props {
   task: Task;
@@ -12,6 +13,7 @@ interface Props {
 
 export default function TaskRender({ task }: Props) {
   const [loader, setLoader] = useState<boolean>(false);
+  const [editMode, setEditMode] = useState<boolean>(false);
 
   const { setTasks } = useTaskStore((state) => ({
     setTasks: state.setTask,
@@ -33,13 +35,17 @@ export default function TaskRender({ task }: Props) {
           <p className="description">{task.description}</p>
         </div>
         <div className="buttons">
-          <button className="edit">
+          <button className="edit" onClick={() => setEditMode(true)}>
             <img src="../../../public/edit.svg" alt="edit svg" />
           </button>
           <button className="delete" onClick={() => handleDelete()}>
             <img src="../../../public/trash.svg" alt="" />
           </button>
         </div>
+
+        {editMode ? (
+          <FormUpdateTask setEditMode={setEditMode} task={task} />
+        ) : undefined}
       </div>
     </>
   );
