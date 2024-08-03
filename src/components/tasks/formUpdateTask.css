@@ -1,0 +1,45 @@
+form.update-task {
+  position: absolute;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+form.update-task div {
+  width: min-content;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+form.update-task div input {
+  padding: 5px;
+  border: 1px solid gray;
+  outline: none;
+  border-radius: 4px;
+
+  transition: 0.3s;
+}
+form.update-task input:focus {
+  border: 1px solid black;
+}
+form.update-task button {
+  cursor: pointer;
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 6px;
+}
+form.update-task button.close {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 5px;
+  border: none;
+  padding: 0;
+  font-size: 1rem;
+}
