@@ -3,7 +3,7 @@ import { Task } from "../types";
 
 interface State {
   tasks: Task[];
-  setTask: (task: Task) => void;
+  setTask: (task: Task[]) => void;
   deleteTask: (id: string) => void;
   updateTask: (id: string, updatedTask: Task) => void;
 }
@@ -11,8 +11,8 @@ interface State {
 export const useTaskStore = create<State>((set) => ({
   tasks: [],
   setTask: (task) =>
-    set((state) => ({
-      tasks: [...state.tasks, task],
+    set(() => ({
+      tasks: task,
     })),
   deleteTask: (id) =>
     set((state) => ({
