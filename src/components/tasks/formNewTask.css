@@ -1,0 +1,47 @@
+form.new-task {
+  width: 80%;
+  max-width: 400px;
+  min-width: 320px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+form.new-task label {
+  position: relative;
+  top: 0.9rem;
+  width: 100%;
+  color: white;
+  transition: 0.3s;
+  font-size: 1.1rem;
+}
+form.new-task label.error {
+  color: rgb(255, 166, 156);
+}
+form.new-task input {
+  padding: 0.6rem;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+}
+form.new-task button {
+  cursor: pointer;
+  padding: 8px 15px;
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+  border-radius: 4px;
+  font-size: 1rem;
+
+  transition: 0.3s;
+}
+form.new-task button:hover {
+  background-color: white;
+  color: black;
+}
+form.new-task button:active {
+  opacity: 0.8;
+}
