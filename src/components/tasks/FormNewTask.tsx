@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { auth } from "../../firebase/connection";
-import { onAuthStateChanged } from "firebase/auth";
 import { createTask } from "../../firebase/firestore";
 import { Task } from "../../types";
 import "./formNewTask.css";
@@ -10,9 +8,8 @@ import { useEmailStore } from "../../store/emailStore";
 import { useTaskStore } from "../../store/taskStore";
 
 export default function FormNewTask() {
-  const { email, setEmail } = useEmailStore((state) => ({
+  const { email } = useEmailStore((state) => ({
     email: state.email,
-    setEmail: state.setEmail,
   }));
   const { setTasks } = useTaskStore((state) => ({
     setTasks: state.setTask,
