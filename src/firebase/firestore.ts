@@ -48,6 +48,7 @@ export async function createTask(
 ) {
   try {
     await addDoc(taskCollection, task);
+    getTasks(setTasks, setLoader, taskAuthor);
   } catch (error: any) {
     alert(error.code);
   }

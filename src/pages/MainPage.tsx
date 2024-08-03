@@ -1,15 +1,21 @@
 import "./mainPage.css";
 
 import { Navigate } from "react-router-dom";
-import { useTaskStore } from "../store/taskStore";
 import { getTasks } from "../firebase/firestore";
 import { useEffect, useState } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../firebase/connection";
 import TaskBoard from "../components/tasks/TaskBoard";
 
+// Stores
+import { useTaskStore } from "../store/taskStore";
+import { useEmailStore } from "../store/emailStore";
+
 export default function MainPage() {
-  const [email, setEmail] = useState<string>();
+  const { email, setEmail } = useEmailStore((state) => ({
+    email: state.email,
+    setEmail: state.setEmail,
+  }));
   const [logged, setLogged] = useState<boolean>(true);
 
   const [loader, setLoader] = useState<boolean>(false);

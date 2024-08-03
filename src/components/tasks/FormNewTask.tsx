@@ -3,10 +3,17 @@ import { auth } from "../../firebase/connection";
 import { onAuthStateChanged } from "firebase/auth";
 import { createTask } from "../../firebase/firestore";
 import { Task } from "../../types";
-import { useTaskStore } from "../../store/taskStore";
 import "./formNewTask.css";
 
+// Stores
+import { useEmailStore } from "../../store/emailStore";
+import { useTaskStore } from "../../store/taskStore";
+
 export default function FormNewTask() {
+  const { email, setEmail } = useEmailStore((state) => ({
+    email: state.email,
+    setEmail: state.setEmail,
+  }));
   const { setTasks } = useTaskStore((state) => ({
     setTasks: state.setTask,
   }));
@@ -44,17 +51,13 @@ export default function FormNewTask() {
       setName("");
       setDescription("");
 
-      onAuthStateChanged(auth, (user) => {
-        if (user?.email) {
-          const task: Task = {
-            id: crypto.randomUUID(),
-            author: user.email,
-            name,
-            description,
-          };
-          createTask(task, setTasks, setLoader, user.email);
-        }
-      });
+      const task: Task = {
+        id: crypto.randomUUID(),
+        author: email,
+        name,
+        description,
+      };
+      createTask(task, setTasks, setLoader, email);
     }
   }
 
