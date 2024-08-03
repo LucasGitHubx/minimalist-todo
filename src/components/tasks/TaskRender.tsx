@@ -12,7 +12,7 @@ interface Props {
 }
 
 export default function TaskRender({ task }: Props) {
-  const [loader, setLoader] = useState<boolean>(false);
+  const [_, setLoader] = useState<boolean>(false);
   const [editMode, setEditMode] = useState<boolean>(false);
 
   const { setTasks } = useTaskStore((state) => ({

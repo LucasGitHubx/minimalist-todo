@@ -41,7 +41,7 @@ export default function MainPage() {
 
   return (
     <>
-      {!logged ? <Navigate to="/todo/login" /> : undefined}
+      {!logged ? <Navigate to="/minimalist-todo/login" /> : undefined}
       <header>
         <h1>Minimalist todolist</h1>
         <button onClick={() => handleLogOut()}>LogOut</button>

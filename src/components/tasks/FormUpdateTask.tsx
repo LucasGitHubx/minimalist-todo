@@ -15,7 +15,7 @@ interface Props {
 export default function FormUpdateTask({ setEditMode, task }: Props) {
   const [name, setName] = useState<string>("");
   const [description, setDescription] = useState<string>("");
-  const [loader, setLoader] = useState<boolean>(false);
+  const [_, setLoader] = useState<boolean>(false);
 
   const { setTasks } = useTaskStore((state) => ({
     setTasks: state.setTask,

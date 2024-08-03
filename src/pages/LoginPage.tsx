@@ -6,7 +6,7 @@ export default function LoginPage() {
     <>
       <header>
         <h1>Minimalist todolist</h1>
-        <NavLink to="/todo/login">Login</NavLink>
+        <NavLink to="/minimalist-todo/login">Login</NavLink>
       </header>
 
       <div className="login-page page">
