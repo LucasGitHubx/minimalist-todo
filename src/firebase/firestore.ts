@@ -9,6 +9,7 @@ import {
   where,
   deleteDoc,
   doc,
+  updateDoc,
 } from "firebase/firestore";
 
 const db = getFirestore(app);
@@ -63,6 +64,22 @@ export async function deleteTask(
   try {
     const document = doc(db, "tasks", taskId);
     await deleteDoc(document);
+    getTasks(setTasks, setLoader, taskAuthor);
+  } catch (error: any) {
+    alert(error.code);
+  }
+}
+
+export async function updateTask(
+  taskId: string,
+  setTasks: (tasks: Task[]) => void,
+  setLoader: (val: boolean) => void,
+  taskAuthor: string | undefined,
+  task: Task
+) {
+  try {
+    const document = doc(db, "tasks", taskId);
+    await updateDoc(document, { ...task });
     getTasks(setTasks, setLoader, taskAuthor);
   } catch (error: any) {
     alert(error.code);
