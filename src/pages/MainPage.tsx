@@ -20,7 +20,8 @@ export default function MainPage() {
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      if (typeof user?.email === "string") {
+      if (user?.email) {
+        setTasks([]);
         setEmail(user.email);
         getTasks(setTasks, setLoader, user.email);
       }

@@ -40,7 +40,12 @@ export async function getTasks(
   }
 }
 
-export async function createTask(task: Task) {
+export async function createTask(
+  task: Task,
+  setTasks: (tasks: Task[]) => void,
+  setLoader: (val: boolean) => void,
+  taskAuthor: string | undefined
+) {
   try {
     await addDoc(taskCollection, task);
   } catch (error: any) {

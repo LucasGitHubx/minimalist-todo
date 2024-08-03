@@ -4,14 +4,13 @@ import { auth } from "../../firebase/connection";
 import { onAuthStateChanged } from "firebase/auth";
 import { deleteTask } from "../../firebase/firestore";
 import { useTaskStore } from "../../store/taskStore";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface Props {
   task: Task;
 }
 
 export default function TaskRender({ task }: Props) {
-  const [deletedStatus, setDeletedStatus] = useState<string>("");
   const [loader, setLoader] = useState<boolean>(false);
 
   const { setTasks } = useTaskStore((state) => ({
@@ -21,7 +20,7 @@ export default function TaskRender({ task }: Props) {
   function handleDelete() {
     onAuthStateChanged(auth, (user) => {
       if (user?.email) {
-        deleteTask(task.id, setDeletedStatus, setTasks, setLoader, user.email);
+        deleteTask(task.id, setTasks, setLoader, user.email);
       }
     });
   }

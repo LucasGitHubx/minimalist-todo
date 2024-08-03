@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { auth } from "../../firebase/connection";
 import { onAuthStateChanged } from "firebase/auth";
-import { createTask, getTasks } from "../../firebase/firestore";
+import { createTask } from "../../firebase/firestore";
 import { Task } from "../../types";
 import { useTaskStore } from "../../store/taskStore";
 import "./formNewTask.css";
@@ -17,7 +17,6 @@ export default function FormNewTask() {
   const [nameError, setNameError] = useState<boolean>(false);
   const [descriptionError, setDescriptionError] = useState<boolean>(false);
 
-  const [createdStatus, setCreatedStatus] = useState<string>("");
   const [_, setLoader] = useState<boolean>(false);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -26,8 +25,8 @@ export default function FormNewTask() {
     const nameRegex = /^.{4,15}$/;
     const descriptionRegex = /^.{5,30}$/;
 
-    const nameRegexValidation = nameRegex.test(name);
-    const descriptionRegexValidation = descriptionRegex.test(description);
+    let nameRegexValidation = nameRegex.test(name);
+    let descriptionRegexValidation = descriptionRegex.test(description);
 
     if (nameRegexValidation) {
       setNameError(false);
@@ -42,6 +41,9 @@ export default function FormNewTask() {
     }
 
     if (descriptionRegexValidation && nameRegexValidation) {
+      setName("");
+      setDescription("");
+
       onAuthStateChanged(auth, (user) => {
         if (user?.email) {
           const task: Task = {
@@ -50,13 +52,9 @@ export default function FormNewTask() {
             name,
             description,
           };
-
-          createTask(task, setCreatedStatus);
-          getTasks(setTasks, setLoader, user.email);
+          createTask(task, setTasks, setLoader, user.email);
         }
       });
-      setName("");
-      setDescription("");
     }
   }
 

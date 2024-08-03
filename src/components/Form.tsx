@@ -57,8 +57,6 @@ export default function Form() {
           alert(error.code);
         }
       }
-    } else {
-      console.log("Validación incompleta");
     }
   }
 
