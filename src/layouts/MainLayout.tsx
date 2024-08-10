@@ -16,7 +16,7 @@ export default function MainLayout() {
 
   return (
     <>
-      {user === null ? <Navigate to="/todo/login" /> : undefined}
+      {user === null ? <Navigate to="/minimalist-todo/login" /> : undefined}
       <Outlet />
     </>
   );

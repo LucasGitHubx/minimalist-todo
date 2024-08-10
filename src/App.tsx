@@ -11,9 +11,9 @@ import MainPage from "./pages/MainPage";
 export default function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route element={<MainLayout />} path="/minimalist-todo/">
-        <Route element={<MainPage />} index />
-        <Route element={<LoginPage />} path="/minimalist-todo/login" />
+      <Route path="/minimalist-todo/" element={<MainLayout />}>
+        <Route index element={<MainPage />} />
+        <Route path="/minimalist-todo/login" element={<LoginPage />} />
       </Route>
     )
   );

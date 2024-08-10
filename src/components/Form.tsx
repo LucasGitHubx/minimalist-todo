@@ -89,7 +89,7 @@ export default function Form() {
             onChange={(e) => setPassword(e.target.value)}
           />
           <img
-            src="../../public/eye-icon.svg"
+            src="eye-icon.svg"
             alt="eye-icon"
             onMouseDown={() => setInputType("text")}
             onMouseUp={() => setInputType("password")}
@@ -109,7 +109,7 @@ export default function Form() {
           <a onClick={() => setRegisterOrLogin("login")}>Login</a>
         </div>
       )}
-      {redirect ? <Navigate to="/todo/" /> : undefined}
+      {redirect ? <Navigate to="/minimalist-todo/" /> : undefined}
     </>
   );
 }
