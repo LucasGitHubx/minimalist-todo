@@ -36,10 +36,10 @@ export default function TaskRender({ task }: Props) {
         </div>
         <div className="buttons">
           <button className="edit" onClick={() => setEditMode(true)}>
-            <img src="../../../public/edit.svg" alt="edit svg" />
+            <img src="public/edit.svg" alt="edit svg" />
           </button>
           <button className="delete" onClick={() => handleDelete()}>
-            <img src="../../../public/trash.svg" alt="" />
+            <img src="public/trash.svg" alt="delete svg" />
           </button>
         </div>
 
